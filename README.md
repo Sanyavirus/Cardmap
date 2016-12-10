@@ -213,10 +213,4 @@ scenario_id
 	</textbindings>
 </body>
 ```
-
 #
-### Services that can be accessed ###
-* HMI -> IOT Service
-* HMI -> TextProcessing Service
-* HMI -> DB Service
-* HMI -> Scenarios Service
