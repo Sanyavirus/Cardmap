@@ -1,13 +1,7 @@
-﻿namespace SmartHouseTest.TcpClient
-{
-    public class TcpClient
-    {
-        private int port;
-        private string ip;
+﻿using System;
+using System.Net;
 
-        public TcpClient()
-        {
-              
-        }
-    }
+namespace SmartHouseTest.TcpClient
+{
+
 }

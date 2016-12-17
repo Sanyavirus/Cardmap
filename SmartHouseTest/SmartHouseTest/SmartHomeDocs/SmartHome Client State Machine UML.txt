@@ -1,0 +1,16 @@
+﻿@startuml
+
+title SmartHome Client State Machine
+[*] --> Initialization
+
+Initialization --> Authentification : Init Successfull
+Initialization --> [*] : Init Failed
+Authentification --> GetDeviceList : Auth Success
+Authentification --> Authentification : Auth Failed
+GetDeviceList --> Configuration : Virtual Conf list is not recieved
+GetDeviceList --> Running : Virtual Conf list is recieved
+Configuration --> GetDeviceList : Device List Recieved
+Running --> Configuration : User Command (New Device)
+Running --> [*]
+
+@enduml
