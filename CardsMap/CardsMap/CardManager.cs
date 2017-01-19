@@ -62,7 +62,7 @@ namespace CardsMap
             {
                 return null;
             }
-
+            
             result.Add(findResult.FirstCard);
 
             if (findResult.FirstCard.ArrivalCard != null)
