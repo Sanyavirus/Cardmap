@@ -11,7 +11,7 @@ namespace SmartHouseTest
 
     class Program
     {
-        interface IFuckingTest
+     И%;   interface IFuckingTest
         {
             void Test();
         }
