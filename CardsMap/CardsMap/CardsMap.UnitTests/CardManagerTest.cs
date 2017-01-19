@@ -65,7 +65,7 @@ namespace CardsMap.UnitTests
 
             return true;
         } 
-
+         
         [TestMethod]
         public void SortCard_Test()
         {
