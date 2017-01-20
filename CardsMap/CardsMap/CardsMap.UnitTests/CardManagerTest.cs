@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CardsMap.Entity;
+using CardsMap.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CardsMap.UnitTests
@@ -73,7 +75,7 @@ namespace CardsMap.UnitTests
             List<Card> cards = InitializeCards();
             List<Card> result = new List<Card>();
             //Act
-            result = CardManager.SortCard(cards).ToList();
+            result = CardService.SortCard(cards).ToList();
             //Assert
             Assert.IsTrue(CheckCards(result));
         }

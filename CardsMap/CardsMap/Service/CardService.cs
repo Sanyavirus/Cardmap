@@ -1,37 +1,33 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CardsMap.Entity;
 
-namespace CardsMap
+namespace CardsMap.Service
 {
-    public class CardManager
+    public class CardService
     {
-    
-        private static FindResult FindFirstCardAndCheckForArrival(IList<Card> cards)
+        private static FindCardResult FindFirstCardAndCheckForArrival(IList<Card> cards)
         {
-            FindResult findResult = new FindResult();
+            FindCardResult findCardResult = new FindCardResult();
 
             foreach (Card card in cards)
             {
                 if (card.DepartureCard == null)
                 {
-                    findResult.FirstCard = card;
+                    findCardResult.FirstCard = card;
                 }
                 if (card.ArrivalCard == null)
                 {
-                    findResult.IsHasArrivalNull = true;
+                    findCardResult.IsHasArrivalNull = true;
                 }
             }
 
-            return findResult;
+            return findCardResult;
         }
 
-        private static bool CheckSortConditions(FindResult findResult)
+        private static bool CheckSortConditions(FindCardResult findCardResult)
         {
-            if (findResult.FirstCard != null && findResult.IsHasArrivalNull)
+            if (findCardResult.FirstCard != null && findCardResult.IsHasArrivalNull)
             {
                 return true;
             }
@@ -44,8 +40,7 @@ namespace CardsMap
             if (currentCard.ArrivalCard != null)
             {
                 result.Add(currentCard.ArrivalCard);
-                currentCard = currentCard.ArrivalCard;
-                Sort(currentCard, result);
+                Sort(currentCard.ArrivalCard, result);
             }
         }
         
@@ -56,18 +51,18 @@ namespace CardsMap
         /// <returns>отсортированный список</returns>
         public static IList<Card> SortCard(IList<Card> cards)
         {
-            FindResult findResult = FindFirstCardAndCheckForArrival(cards);
+            FindCardResult findCardResult = FindFirstCardAndCheckForArrival(cards);
             IList<Card> result = new List<Card>();
-            if (!CheckSortConditions(findResult))
+            if (!CheckSortConditions(findCardResult))
             {
                 return null;
             }
             
-            result.Add(findResult.FirstCard);
+            result.Add(findCardResult.FirstCard);
 
-            if (findResult.FirstCard.ArrivalCard != null)
+            if (findCardResult.FirstCard.ArrivalCard != null)
             {
-                Sort(findResult.FirstCard, result);
+                Sort(findCardResult.FirstCard, result);
             }
 
             return result;

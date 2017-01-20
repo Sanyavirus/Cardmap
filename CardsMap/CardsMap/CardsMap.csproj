@@ -43,10 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Card.cs" />
-    <Compile Include="CardComparer.cs" />
-    <Compile Include="CardManager.cs" />
-    <Compile Include="FindResult.cs" />
+    <Compile Include="Entity\Card.cs" />
+    <Compile Include="Service\CardService.cs" />
+    <Compile Include="Entity\FindResult.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

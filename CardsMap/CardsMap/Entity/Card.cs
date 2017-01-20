@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CardsMap
+﻿namespace CardsMap.Entity
 {
     public class Card 
     {

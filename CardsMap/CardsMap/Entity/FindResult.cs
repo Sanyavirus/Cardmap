@@ -1,6 +1,6 @@
-﻿namespace CardsMap
+﻿namespace CardsMap.Entity
 {
-    public class FindResult
+    public class FindCardResult
     {
         Card firstCard = null;
         bool isHasArrivalNull = false;
