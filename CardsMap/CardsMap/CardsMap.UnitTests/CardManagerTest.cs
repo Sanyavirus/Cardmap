@@ -43,7 +43,7 @@ namespace CardsMap.UnitTests
         [TestMethod]
         public void SortCard_Test()
         {
-            //Arrange
+            //Arrange 
             IRepository repository = new FakeRepository();
             IList<Card> cards = repository.GetCards();
             IList<Card> result = new List<Card>();
