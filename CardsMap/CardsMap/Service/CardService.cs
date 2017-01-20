@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using CardsMap.Entity;
 
 namespace CardsMap.Service
@@ -43,7 +44,23 @@ namespace CardsMap.Service
                 Sort(currentCard.ArrivalCard, result);
             }
         }
-        
+
+        public static string GetCardInformation(IEnumerable<Card> cards)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Card card in cards)
+            {
+                sb.AppendFormat("Текущая карточка город {0}", card.CityName);
+                sb.AppendFormat("Город отправления - {0}",
+                    card.DepartureCard != null ? card.DepartureCard.CityName : "Пусто");
+                sb.AppendFormat("Город прибытия - {0}",
+                      card.ArrivalCard != null ? card.ArrivalCard.CityName : "Пусто");
+            }
+
+            return sb.ToString();
+        }
+
         /// <summary>
         /// сортируем карточки
         /// </summary>

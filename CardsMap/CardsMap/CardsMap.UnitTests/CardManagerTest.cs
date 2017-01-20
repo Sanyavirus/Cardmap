@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CardsMap.Entity;
+using CardsMap.Repository;
 using CardsMap.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -11,36 +12,7 @@ namespace CardsMap.UnitTests
     [TestClass]
     public class CardManagerTest
     {
-        private List<Card> InitializeCards()
-        {
-            List<Card> cards = new List<Card>();
 
-            Card parisCard = new Card("Париж");
-
-            Card moscowCard = new Card("Москва");
-
-            Card melburnCard = new Card("Мельбурн");
-
-            Card kolnCard = new Card("Кёльн");
-
-            moscowCard.ArrivalCard = parisCard;
-            moscowCard.DepartureCard = kolnCard;
-            cards.Add(moscowCard);
-
-            parisCard.ArrivalCard = null;
-            parisCard.DepartureCard = moscowCard;
-            cards.Add(parisCard);
-
-            kolnCard.ArrivalCard = moscowCard;
-            kolnCard.DepartureCard = melburnCard;
-            cards.Add(kolnCard);
-
-            melburnCard.DepartureCard = null;
-            melburnCard.ArrivalCard = kolnCard;
-            cards.Add(melburnCard);
-
-            return cards;
-        }
 
         private bool CheckCards(IList<Card> cards)
         {
@@ -72,8 +44,9 @@ namespace CardsMap.UnitTests
         public void SortCard_Test()
         {
             //Arrange
-            List<Card> cards = InitializeCards();
-            List<Card> result = new List<Card>();
+            IRepository repository = new FakeRepository();
+            IList<Card> cards = repository.GetCards();
+            IList<Card> result = new List<Card>();
             //Act
             result = CardService.SortCard(cards).ToList();
             //Assert
